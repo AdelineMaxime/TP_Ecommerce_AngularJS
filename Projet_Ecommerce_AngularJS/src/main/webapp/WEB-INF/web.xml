@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-  <display-name>Projet_Ecommerce_AngularJS</display-name>
+	<display-name>Projet_Ecommerce_AngularJS</display-name>
 
 	<!-- Recharger application-context -->
 	<listener>
@@ -25,10 +25,6 @@
 		<servlet-name>springrest</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
 
 	<filter>
 		<filter-name>CorsFilter</filter-name>
