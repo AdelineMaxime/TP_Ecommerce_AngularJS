@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IClientService;
@@ -42,7 +43,11 @@ public class ClientRestController {
 		return produitService.getAllProductService();
 	}
 	
-	
+	@RequestMapping(value="/allCat", method=RequestMethod.GET, produces="application/json")
+	public List<Categorie> getAllCat() {
+		
+		return categorieService.getAllCategorieService();
+	}
 	
 	
 }
