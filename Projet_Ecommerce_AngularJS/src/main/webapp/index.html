@@ -15,10 +15,25 @@
 	<script type="text/javascript" src="statique/ressources/angular/angular-route.js"></script>
 	
 	<!-- Librairies perso -->
-	<script type="text/javascript" src="statique/js/modules/module.js">
-	</script>
+	<script type="text/javascript" src="statique/js/modules/module.js"></script>
+	<script type="text/javascript" src="statique/js/providers/clientProvider.js"></script>
+	<script type="text/javascript" src="statique/js/controllers/clientCtrl.js"></script>
+	<script type="text/javascript" src="statique/js/routing/routing.js"></script>
 </head>
-<body>
+
+
+<body ng-app="monApp">
+
+Client :
+<a href="/client/allProd">Tous les produits</a>
+
+
+Gestion :
+<a href="/gestion/ident">Identification</a>
+
+<div class="container">
+<div ng-view></div>
+</div>
 
 </body>
 </html>
