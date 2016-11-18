@@ -117,7 +117,15 @@ public class ClientRestController {
 		return panier;
 	}
 	
+	@RequestMapping(value="/delete/{nomProd}", method=RequestMethod.GET, produces="application/json")
 	public Panier deleteToPanier(@PathVariable("nomProd") String nom) {
 		
+		Produit p1 = produitService.getProductByNameService(nom);
+		int qte = articles.get(p1.getId_produit()).getQuantite();
+		
+		p1.setQuantite(p1.getId_produit()+qte);
+		produitService.updateProductService(p1);
+		
+		return panier;
 	}
 }
