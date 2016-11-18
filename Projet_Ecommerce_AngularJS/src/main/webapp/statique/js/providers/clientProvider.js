@@ -39,10 +39,39 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	
+	function addPanier(nomProd,callback) {
+		$http({
+			method: 'GET',
+			url: urlString+'/addPanier/'+nomProd
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
+	
+	function getPanier(callback) {
+		$http({
+			method: 'GET',
+			url: urlString+'/panier'
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function(response) {
+			console.log(response);
+		});
+	}
+	
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
 		getProdByCat: getProdByCat,
+		addPanier: addPanier,
+		getPanier: getPanier,
 	}
 	
 })

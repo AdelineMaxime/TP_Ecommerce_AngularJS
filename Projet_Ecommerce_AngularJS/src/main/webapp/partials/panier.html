@@ -5,9 +5,27 @@
 		aria-haspopup="true" aria-expanded="false">Actions <span
 			class="caret"></span></a>
 		<ul class="dropdown-menu">
-			<li><a href="#">Aller au panier</a></li>
-			<li><a href="#">Accès gestionnaire</a></li>
+			<li><a href="#/client/panier">Aller au panier</a></li>
+			<li><a href="#/gestion/ident">Accès gestionnaire</a></li>
 		</ul>
 </ul>
 
 Panier
+
+<table class="table table-striped">
+	<thead>
+		<td>Nom Produit</td>
+		<td>Prix unitaire</td>
+		<td>Quantité</td>
+		<td>Prix total</td>
+		<td>Actions</td>
+	</thead>
+
+	<tbody ng-repeat="lc in panier.listeLC">
+		<td>{{lc.produit.nom}}</td>
+		<td>{{lc.produit.prix}}</td>
+		<td>{{lc.quantite}}</td>
+		<td>{{lc.prix}}</td>
+		<td><button class="btn btn-default btn-lg">Retirer du panier</button></td>
+	</tbody>
+</table>

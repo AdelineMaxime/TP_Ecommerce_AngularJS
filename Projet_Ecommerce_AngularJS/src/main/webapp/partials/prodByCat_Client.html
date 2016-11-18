@@ -5,8 +5,8 @@
 		aria-haspopup="true" aria-expanded="false">Actions <span
 			class="caret"></span></a>
 		<ul class="dropdown-menu">
-			<li><a href="/client/panier">Aller au panier</a></li>
-			<li><a href="#">Accès gestionnaire</a></li>
+			<li><a href="#/client/panier">Aller au panier</a></li>
+			<li><a href="#/gestion/ident">Accès gestionnaire</a></li>
 		</ul>
 </ul>
 
@@ -16,6 +16,7 @@
 		<td>Description</td>
 		<td>Prix</td>
 		<td>Quantité</td>
+		<td>Actions</td>
 	</thead>
 
 	<tbody ng-repeat="prod in prodByCat">
@@ -23,5 +24,6 @@
 		<td>{{prod.nom}}</td>
 		<td>{{prod.description}}</td>
 		<td>{{prod.quantite}}</td>
+		<td><button class="btn btn-default btn-lg" ng-click="doAddPanier(prod)">Ajouter au panier</button></td>
 	</tbody>
 </table>
