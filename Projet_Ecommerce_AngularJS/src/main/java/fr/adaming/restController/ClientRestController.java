@@ -104,7 +104,6 @@ public class ClientRestController {
 			prix = prix + lc.getPrix();
 
 		}
-		System.out.println(panier);
 		panier.setListeLC(listePanier);
 		panier.setPrixTotal(prix);
 
@@ -117,7 +116,7 @@ public class ClientRestController {
 		return panier;
 	}
 	
-	@RequestMapping(value="/delete/{nomProd}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/deletePanier/{nomProd}", method=RequestMethod.GET, produces="application/json")
 	public Panier deleteToPanier(@PathVariable("nomProd") String nom) {
 		
 		Produit p1 = produitService.getProductByNameService(nom);
@@ -126,6 +125,22 @@ public class ClientRestController {
 		p1.setQuantite(p1.getId_produit()+qte);
 		produitService.updateProductService(p1);
 		
+		articles.remove(p1.getId_produit());
+		
+		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
+		Panier panierC = new Panier();
+		panierC.setPrixTotal(0.00);
+		
+		for (LigneCommande lc:articles.values()) {
+			lcList.add(lc);
+			panierC.setPrixTotal(panierC.getPrixTotal()+lc.getPrix());
+		}
+		
+		panier.setListeLC(lcList);
+		panier.setPrixTotal(panierC.getPrixTotal());
+		
 		return panier;
 	}
+	
+	
 }

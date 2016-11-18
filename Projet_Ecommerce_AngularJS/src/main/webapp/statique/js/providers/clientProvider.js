@@ -65,6 +65,17 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	function deletePanier(nomProd,callback) {
+		$http({
+			method: 'GET',
+			url: urlString+'/deletePanier/'+nomProd
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
 	
 	return {
 		getAllProd:getAllProd,
@@ -72,6 +83,7 @@ monApp.factory('clientFactory', function($http) {
 		getProdByCat: getProdByCat,
 		addPanier: addPanier,
 		getPanier: getPanier,
+		deletePanier: deletePanier,
 	}
 	
 })

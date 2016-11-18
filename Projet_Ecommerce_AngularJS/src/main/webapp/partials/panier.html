@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
 	<li role="presentation"><a href="/Projet_Ecommerce_AngularJS/">Home</a></li>
-	<li role="presentation" class="dropdown"><a href="#/client/allCat"
+	<li role="presentation" class="dropdown"><a href="#/client/panier"
 		class="dropdown-toggle" data-toggle="dropdown" role="button"
 		aria-haspopup="true" aria-expanded="false">Actions <span
 			class="caret"></span></a>
@@ -9,14 +9,19 @@
 			<li><a href="#/gestion/ident">Accès gestionnaire</a></li>
 		</ul>
 </ul>
+<br>
+<br>
+<br>
+<br>
 
-Panier
 
-<table class="table table-striped">
+<h1 align="center">Panier</h1>
+
+<table class="table table-striped" style="text-align: center;">
 	<thead>
 		<td>Nom Produit</td>
 		<td>Prix unitaire</td>
-		<td>Quantité</td>
+		<td>Quantite</td>
 		<td>Prix total</td>
 		<td>Actions</td>
 	</thead>
@@ -26,6 +31,8 @@ Panier
 		<td>{{lc.produit.prix}}</td>
 		<td>{{lc.quantite}}</td>
 		<td>{{lc.prix}}</td>
-		<td><button class="btn btn-default btn-lg">Retirer du panier</button></td>
+		<td><button class="btn btn-default btn-lg" ng-click="doDeletePanier(lc.produit)">Retirer du panier</button></td>
 	</tbody>
 </table>
+
+<button class="btn btn-primary"><a href="#/client/ident">Valider le panier</a></button>

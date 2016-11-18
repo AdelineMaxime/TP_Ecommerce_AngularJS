@@ -68,6 +68,17 @@ monApp
 	clientFactory.getPanier(function(callback) {
 		$scope.panier = callback;
 	})
+	
+	// Supprimer du panier
+	$scope. doDeletePanier = function(prod) {
+		clientFactory.deletePanier(prod.nom, function(callback) {
+			$scope.panier = callback;
+		})
+		clientFactory.getPanier(function(callback) {
+			$scope.panier = callback;
+		})
+		//$location.path('client/panier');
+	}
 })
 
 
