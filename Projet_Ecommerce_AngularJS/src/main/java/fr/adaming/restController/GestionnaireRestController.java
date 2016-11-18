@@ -51,7 +51,7 @@ public class GestionnaireRestController {
 	}
 	
 	@RequestMapping(value="/allProd/{id}", method=RequestMethod.GET, produces="application/json")
-	public List<Produit> getAllProduit(@PathVariable("id") int id){
+	public List<Produit> getAllProduitByCat(@PathVariable("id") int id){
 		
 		return produitService.getProductByCatService(id);
 	}
