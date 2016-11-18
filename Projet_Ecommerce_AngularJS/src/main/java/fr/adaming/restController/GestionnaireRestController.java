@@ -51,7 +51,7 @@ public class GestionnaireRestController {
 	}
 	
 	@RequestMapping(value="/allProd/{id}", method=RequestMethod.GET, produces="application/json")
-	public List<Produit> getAllProduit(@PathVariable("id") int id){
+	public List<Produit> getAllProduitByCat(@PathVariable("id") int id){
 		
 		return produitService.getProductByCatService(id);
 	}
@@ -76,6 +76,20 @@ public class GestionnaireRestController {
 		categorieService.deleteCategorieService(categorie);
 		
 	}
-
+	
+	@RequestMapping(value="/supprimerProd/{name}", method=RequestMethod.DELETE, produces="application/json")
+	public void supprimerProd(@PathVariable("name") String name){
+		
+		Produit produit = produitService.getProductByNameService(name);
+		
+		produitService.deleteProductService(produit);		
+		
+	}
+	
+	@RequestMapping(value="/modifierProd", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	public void modifierProduit(@RequestBody Produit produit){
+		
+		produitService.updateProductService(produit);
+	}
 
 }
