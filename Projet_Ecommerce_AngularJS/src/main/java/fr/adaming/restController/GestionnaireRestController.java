@@ -92,6 +92,4 @@ public class GestionnaireRestController {
 		produitService.updateProductService(produit);
 	}
 
-	
-
 }
