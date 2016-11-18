@@ -9,9 +9,9 @@ monApp.factory('clientFactory', function($http) {
 		}).success(function(response) {
 			console.log(response);
 			callback(response);
-		}).error(function (reason) {
-			console.log('Erreur : '+reason);
-		})
+		}).error(function (response) {
+			console.log('Erreur: '+response.statusText);
+		});
 	}
 	
 	
@@ -22,8 +22,14 @@ monApp.factory('clientFactory', function($http) {
 		}).success(function(response) {
 			console.log(response);
 			callback(response);
-		}).error(function (reason) {
-			console.log('Erreur : '+reason);
-		})
+		}).error(function (response) {
+			console.log(response);
+		});
 	}
+	
+	return {
+		getAllProd:getAllProd,
+		getAllCat:getAllCat,
+	}
+	
 })
