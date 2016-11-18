@@ -3,6 +3,8 @@ package fr.adaming.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +38,44 @@ public class GestionnaireRestController {
 		return produitService.getAllProductService();
 	}
 	
+	@RequestMapping(value="/categorie/{name}", method=RequestMethod.GET, produces="application/json")
+	public Categorie getCategorieByName(@PathVariable("name") String name){
+		
+		return categorieService.getCategorieByNameService(name);
+	}
+	
+	@RequestMapping(value="/produit/{name}", method=RequestMethod.GET, produces="application/json")
+	public Produit getProduitByName(@PathVariable("name") String name){
+		
+		return produitService.getProductByNameService(name);
+	}
+	
+	@RequestMapping(value="/allProd/{id}", method=RequestMethod.GET, produces="application/json")
+	public List<Produit> getAllProduit(@PathVariable("id") int id){
+		
+		return produitService.getProductByCatService(id);
+	}
+	
+	@RequestMapping(value="/ajouterCat", method=RequestMethod.POST, produces="application/json")
+	public void ajouterCategorie(@RequestBody Categorie categorie){
+		
+		categorieService.addCategorieService(categorie);
+	}
+
+	@RequestMapping(value="/ajouterProd", method=RequestMethod.POST, produces="application/json")
+	public void ajouterProduit(@RequestBody Produit produit){
+		
+		produitService.addProductService(produit);
+	}
+	
+	@RequestMapping(value="/supprimerCat/{name}", method=RequestMethod.DELETE, produces="application/json")
+	public void supprimerCat(@PathVariable("name") String name){
+		
+		Categorie categorie = categorieService.getCategorieByNameService(name);
+		
+		categorieService.deleteCategorieService(categorie);
+		
+	}
+
 
 }

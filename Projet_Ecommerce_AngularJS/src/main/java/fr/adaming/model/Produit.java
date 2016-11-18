@@ -36,8 +36,8 @@ public class Produit implements Serializable {
 	private boolean selection;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="cat_id", referencedColumnName="id_categorie", nullable=true)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="cat_id")
 	private Categorie categorie;
 
 
