@@ -110,11 +110,14 @@ public class ClientRestController {
 
 		return panier;
 	}
-
 	
 	@RequestMapping(value="/panier", method=RequestMethod.GET, produces="application/json")
 	public Panier getPanier() {
 		
 		return panier;
+	}
+	
+	public Panier deleteToPanier(@PathVariable("nomProd") String nom) {
+		
 	}
 }
