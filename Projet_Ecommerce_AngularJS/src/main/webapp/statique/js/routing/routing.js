@@ -48,6 +48,10 @@ monApp.config(function($routeProvider) {
 		templateUrl: "partials/allCat_Client.html",
 		controller: "clientAllCatCtrl"
 	})
+	.when('/client/prodByCat', {
+		templateUrl: "partials/prodByCat_Client.html",
+		controller: "clientProdByCatCtrl"
+	})
 	.when('/client/panier', {
 		templateUrl: "partials/panier.html",
 		controller: "clientPanierCtrl"
@@ -59,6 +63,9 @@ monApp.config(function($routeProvider) {
 	.when('/client/addClient', {
 		templateUrl: "partials/addClient.html",
 		controller: "clientaddClientCtrl"
+	})
+	.otherwise({
+		redirectTo: '/client/allCat'
 	})
 
 	

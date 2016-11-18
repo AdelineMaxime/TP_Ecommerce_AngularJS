@@ -1,6 +1,43 @@
-Liste des catégories
+<ul class="nav nav-tabs">
+	<li role="presentation"><a href="/Projet_Ecommerce_AngularJS/">Home</a></li>
+	<li role="presentation" class="dropdown"><a href="#/client/allCat"
+		class="dropdown-toggle" data-toggle="dropdown" role="button"
+		aria-haspopup="true" aria-expanded="false">Actions <span
+			class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#/client/panier">Aller au panier</a></li>
+			<li><a href="#">Accès gestionnaire</a></li>
+		</ul>
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<br>
 
 <div class="list-group" ng-repeat="cat in allCat">
-	<button type="button" class="list-group-item">{{cat.id_categorie}} | {{cat.nom}}</button>
+	<button type="button" class="list-group-item"
+		ng-click="doGetProdByCat(cat)">{{cat.id_categorie}} |
+		{{cat.nom}}</button>
+
+<table class="table table-striped" ng-show="indice">
+	<thead>
+		<td>Nom</td>
+		<td>Description</td>
+		<td>Prix</td>
+		<td>Quantité</td>
+	</thead>
+
+	<tbody ng-repeat="prod in prodByCat">
+		<td>{{prod.id_produit}}</td>
+		<td>{{prod.nom}}</td>
+		<td>{{prod.description}}</td>
+		<td>{{prod.quantite}}</td>
+	</tbody>
+</table>
+
+
 </div>
 

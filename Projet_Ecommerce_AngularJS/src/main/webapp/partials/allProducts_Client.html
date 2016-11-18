@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<ul class="nav nav-tabs">
+	<li role="presentation"><a href="/Projet_Ecommerce_AngularJS/">Home</a></li>
+	<li role="presentation" class="dropdown"><a href="#/client/allCat"
+		class="dropdown-toggle" data-toggle="dropdown" role="button"
+		aria-haspopup="true" aria-expanded="false">Actions <span
+			class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Aller au panier</a></li>
+			<li><a href="#">Accès gestionnaire</a></li>
+		</ul>
+</ul>
 
-</body>
-</html>
+
+<table class="table table-striped">
+	<thead>
+		<td>Nom</td>
+		<td>Description</td>
+		<td>Prix</td>
+		<td>Quantité</td>
+	</thead>
+
+	<tbody ng-repeat="prod in allProd">
+		<td>{{prod.id_produit}}</td>
+		<td>{{prod.nom}}</td>
+		<td>{{prod.description}}</td>
+		<td>{{prod.quantite}}</td>
+	</tbody>
+</table>
