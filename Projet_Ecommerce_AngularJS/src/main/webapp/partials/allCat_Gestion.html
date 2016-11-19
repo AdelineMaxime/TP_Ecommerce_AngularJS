@@ -6,28 +6,36 @@
 </head>
 <body>
 
+	<label>Search: <input ng-model="searchText"></label>
 
-<h1 align="center">Liste des Catégories</h1>
-
-<label>Search: <input ng-model="searchText"></label>
-
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<td>Id de la catégorie</td>
-			<td>Nom de la catégorie</td>
-			<td>Opération</td>
-		</tr>
-	</thead>
-	<tbody>
-	<tr ng-repeat="cat in allCat| filter:searchText" >
-	<td>{{cat.id_categorie}}</td>
-		<td>{{cat.nom}}</td>
-		<td><button ng-click="bouttonDelete(cat)" class="btn btn-danger">Supprimer</button>
-		</tr>
-	</tbody>
-</table>
-
+	<div align="center">
+		<table cellspacing="0" width="25%">
+			<tr>
+				<td
+					style="background-color: lightblue; color: darkgreen; font-size: 22pt"
+					align="center">Liste Des Categories</td>
+		</table>
+	</div>
+	<br />
+	<br />
+	<table class="table table-hover">
+		<thead>
+			<tr bgcolor="grey" style="color: white; font-size: 18pt">
+				<td align="center"><b>Id de la catégorie</b></td>
+				<td align="center"><b>Nom de la catégorie</b></td>
+				<td align="center"><b>Opération</b></td>
+			</tr>
+		</thead>
+		<tbody bgcolor="azure">
+			<tr ng-repeat="cat in allCat| filter:searchText">
+				<td align="center"><b>{{cat.id_categorie}}</b></td>
+				<td align="center"><b>{{cat.nom}}</b></td>
+				<td align="center"><button ng-click="bouttonProduit(cat)"
+						class="btn btn-info">Voir les produits</button>
+					<button ng-click="bouttonDelete(cat)" class="btn btn-danger">Supprimer</button></td>
+			</tr>
+		</tbody>
+	</table>
 
 
 </body>

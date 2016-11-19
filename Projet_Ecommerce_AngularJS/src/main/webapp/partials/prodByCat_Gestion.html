@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<label>Search: <input ng-model="searchText"></label>
+
+<br/>
+
+<div align="center">
+		<table cellspacing="0" width="25%">
+			<tr>
+				<td
+					style="background-color: lightblue; color: darkgreen; font-size: 22pt"
+					align="center">Liste Des Produits</td>
+		</table>
+	</div>
+
+<br/>
+<br/>
+
+<table class="table table-hover">
+	<thead>
+	<tr bgcolor="grey" style="color: white; font-size: 18pt">
+		<td align="center"><b>Nom</b></td>
+		<td align="center"><b>Description</b></td>
+		<td align="center"><b>Prix</b></td>
+		<td align="center"><b>Quantite</b></td>
+		<td align="center"><b>Actions</b></td>
+		</tr>
+	</thead>
+
+	<tbody ng-repeat="prod in prodByCat| filter:searchText" bgcolor="azure">
+		<td align="center"><b>{{prod.id_produit}}</b></td>
+		<td align="center"><b>{{prod.nom}}</b></td>
+		<td align="center"><b>{{prod.description}}</b></td>
+		<td align="center"><b>{{prod.quantite}}</b></td>
+		<td align="center"><button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
+	</tbody>
+</table>
+
 
 </body>
 </html>
