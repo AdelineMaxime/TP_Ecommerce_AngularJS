@@ -66,6 +66,44 @@ monApp.factory('gestionFactory', function($http) {
 
 	}
 	
+	function addCat(categorie, callback) {
+		$http({
+			method : 'POST',
+			url : urlString + '/ajouterCat',
+			data:angular.toJson(categorie),
+			headers:{
+				'Content-Type':'application/Json'
+			}
+			
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+
+		}).error(function(reason) {
+			console.log('Erreur: ' + reason);
+		});
+
+	}
+	
+	function addProd(produit, callback) {
+		$http({
+			method : 'POST',
+			url : urlString + '/ajouterProd',
+			data:angular.toJson(produit),
+			headers:{
+				'Content-Type':'application/Json'
+			}
+			
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+
+		}).error(function(reason) {
+			console.log('Erreur: ' + reason);
+		});
+
+	}
+	
 	
 	return {
 		getAllProd:getAllProd,
@@ -73,6 +111,8 @@ monApp.factory('gestionFactory', function($http) {
 		suppr:suppr,
 		getProdByCat : getProdByCat,
 		supprProd:supprProd,
+		addCat:addCat,
+		addProd:addProd,
 
 	}
 	

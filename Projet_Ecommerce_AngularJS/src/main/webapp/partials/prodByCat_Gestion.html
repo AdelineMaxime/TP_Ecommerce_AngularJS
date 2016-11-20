@@ -26,10 +26,12 @@
 <table class="table table-hover">
 	<thead>
 	<tr bgcolor="grey" style="color: white; font-size: 18pt">
+		<td align="center"><b>Id</b></td>
 		<td align="center"><b>Nom</b></td>
 		<td align="center"><b>Description</b></td>
 		<td align="center"><b>Prix</b></td>
 		<td align="center"><b>Quantite</b></td>
+		<td align="center"><b>id_cat</b></td>
 		<td align="center"><b>Actions</b></td>
 		</tr>
 	</thead>
@@ -38,10 +40,15 @@
 		<td align="center"><b>{{prod.id_produit}}</b></td>
 		<td align="center"><b>{{prod.nom}}</b></td>
 		<td align="center"><b>{{prod.description}}</b></td>
+		<td align="center"><b>{{prod.prix}}</b></td>
 		<td align="center"><b>{{prod.quantite}}</b></td>
+		<td align="center"><b>{{prod.categorie.nom}}</b></td>
 		<td align="center"><button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
 	</tbody>
 </table>
+<!-- <span ng-repeat="prod in prodByCat track by $first">L'id de la categorie{{prod.categorie.nom}}</span> -->
+
+<a href="#/gestion/addProd">Ajouter un Produit</a>
 
 
 </body>
