@@ -77,6 +77,18 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	function clientExist(nomCl, passwordCl, callback) {
+		$http({
+			method: 'POST',
+			url: urlString+'/connecterClient/'+nomCl+'/'+passwordCl
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
@@ -84,6 +96,7 @@ monApp.factory('clientFactory', function($http) {
 		addPanier: addPanier,
 		getPanier: getPanier,
 		deletePanier: deletePanier,
+		clientExist: clientExist,
 	}
 	
 })

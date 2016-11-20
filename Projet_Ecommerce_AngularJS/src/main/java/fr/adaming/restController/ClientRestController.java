@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Categorie;
+import fr.adaming.model.Client;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
@@ -142,5 +144,17 @@ public class ClientRestController {
 		return panier;
 	}
 	
-	
+	@RequestMapping(value="/connecterClient/{nom}/{password}", method=RequestMethod.POST)
+	public Client connexionClient(@PathVariable("nom") String nom, @PathVariable("password") String password) {
+		
+		int exist = clientService.isExistClientService(nom,password);
+		
+		if (exist == 0) {
+			
+			return null;
+		} else {
+			
+			return clientService.getClientByNameDao(nom);
+		}
+	}
 }
