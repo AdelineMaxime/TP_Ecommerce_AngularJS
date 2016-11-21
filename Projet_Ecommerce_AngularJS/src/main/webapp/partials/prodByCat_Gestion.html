@@ -12,11 +12,11 @@
 <br/>
 
 <div align="center">
-		<table cellspacing="0" width="25%">
+		<table cellspacing="0" width="50%">
 			<tr>
 				<td
 					style="background-color: lightblue; color: darkgreen; font-size: 22pt"
-					align="center">Liste Des Produits</td>
+					align="center">Liste Des Produits de la catégorie {{prodByCat[0].categorie.nom}}</td>
 		</table>
 	</div>
 
@@ -29,9 +29,8 @@
 		<td align="center"><b>Id</b></td>
 		<td align="center"><b>Nom</b></td>
 		<td align="center"><b>Description</b></td>
-		<td align="center"><b>Prix</b></td>
+		<td align="center"><b>Prix (€)</b></td>
 		<td align="center"><b>Quantite</b></td>
-		<td align="center"><b>id_cat</b></td>
 		<td align="center"><b>Actions</b></td>
 		</tr>
 	</thead>
@@ -40,9 +39,8 @@
 		<td align="center"><b>{{prod.id_produit}}</b></td>
 		<td align="center"><b>{{prod.nom}}</b></td>
 		<td align="center"><b>{{prod.description}}</b></td>
-		<td align="center"><b>{{prod.prix}}</b></td>
+		<td align="center"><b>{{prod.prix}} €</b></td>
 		<td align="center"><b>{{prod.quantite}}</b></td>
-		<td align="center"><b>{{prod.categorie.nom}}</b></td>
 		<td align="center"><button ng-click="boutonUpdate(prod)" class="btn btn-primary">Modifier</button>
 		<button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
 	</tbody>
@@ -50,7 +48,7 @@
 <!-- <span ng-repeat="prod in prodByCat track by $first">L'id de la categorie{{prod.categorie.nom}}</span> -->
 
 <a href="#/gestion/addProd">Ajouter un Produit</a>
-Categorie: {{prodByCat.categorie.nom}}
+
 
 </body>
 </html>

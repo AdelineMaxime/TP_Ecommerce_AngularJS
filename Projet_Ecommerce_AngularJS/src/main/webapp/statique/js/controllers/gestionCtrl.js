@@ -70,12 +70,6 @@ monApp
 			$scope.boutonUpdate = function(prod){
 				
 				$rootScope.prod=prod;
-//				$rootScope.produit.id_produit=prod.id_produit;
-//				$rootScope.produit.nom=prod.nom;
-//				$rootScope.produit.description=prod.description;
-//				$rootScope.produit.quantite=prod.quantite;
-//				$rootScope.produit.prix=prod.prix;
-//				$rootScope.produit.categorie=prod.categorie;
 				$location.path("gestion/updateProd")
 			}
 
@@ -106,6 +100,10 @@ monApp
 
 		});
 	}
+	
+	gestionFactory.getAllCat(function(callback) {
+		$scope.allCat = callback;
+	})
 
 })
 
@@ -113,12 +111,6 @@ monApp
 .controller('gestionUpdateProdCtrl', function($scope, gestionFactory, $location, $rootScope){
 		
 				$scope.produit=$rootScope.prod;
-//				$scope.produit.id_produit=$rootScope.prod.id_produit;
-//				$scope.produit.nom=$rootScope.prod.nom;
-//				$scope.produit.description=$rootScope.prod.description;
-//				$scope.produit.quantite=$rootScope.prod.quantite;
-//				$scope.produit.prix=$rootScope.prod.prix;
-//				$scope.produit.categorie=$rootScope.prod.categorie;
 			
 				$scope.modifierProd = function(){
 					gestionFactory.update($scope.produit, function(callback){

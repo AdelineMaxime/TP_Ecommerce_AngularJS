@@ -20,7 +20,7 @@
 				placeholder="description du produit">
 		</div>
 		<div class="form-group">
-			<label for="prixProd">Prix</label> <input type="number"
+			<label for="prixProd">Prix (€)</label> <input type="number"
 				class="form-control" id="prixProd" ng-model="produit.prix"
 				placeholder="prix du produit">
 		</div>
@@ -29,11 +29,12 @@
 				class="form-control" id="qteProd" ng-model="produit.quantite"
 				placeholder="description du produit">
 		</div>
-		<div class="form-group">
-			<label for="idCatProd">id_Cat</label> <input type="number"
-				class="form-control" id="idCatProd" ng-model="produit.categorie.id_categorie"
+		<div class="form-group"><select ng-model="cat" ng-options="y.nom for (x, y) in allCat"></select>
+			<label for="idCatProd">Id</label> <input type="number"
+				class="form-control" id="idCatProd" ng-model="{{cat}}"
 				placeholder="id de la catégorie du produit">
-		</div>
+		</div>	
+		
 
 		<button class="btn btn-default" ng-click="ajouterProd()">
 			Ajouter</button>
