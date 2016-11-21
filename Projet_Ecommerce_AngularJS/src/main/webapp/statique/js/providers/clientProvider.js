@@ -89,6 +89,18 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	function finaliser(nomCl, callback) {
+		$http({
+			method: 'GET',
+			url: urlString+'/final/'+nomCl
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
@@ -97,6 +109,7 @@ monApp.factory('clientFactory', function($http) {
 		getPanier: getPanier,
 		deletePanier: deletePanier,
 		clientExist: clientExist,
+		finaliser: finaliser,
 	}
 	
 })

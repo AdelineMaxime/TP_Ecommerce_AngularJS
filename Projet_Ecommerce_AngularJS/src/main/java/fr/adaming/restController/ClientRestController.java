@@ -1,6 +1,8 @@
 package fr.adaming.restController;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
@@ -148,13 +151,56 @@ public class ClientRestController {
 	public Client connexionClient(@PathVariable("nom") String nom, @PathVariable("password") String password) {
 		
 		int exist = clientService.isExistClientService(nom,password);
+		System.out.println(exist);
 		
 		if (exist == 0) {
 			
-			return null;
+			return new Client(null, null, null, null, 0);
 		} else {
 			
-			return clientService.getClientByNameDao(nom);
+			Client client = clientService.getClientByNameDao(nom);
+			panier.setClientP(client);
+			return client;
 		}
 	}
+	
+	@RequestMapping(value="/final/{nomClient}", method=RequestMethod.GET)
+	public void finaliser(@PathVariable("nomClient") String nom) {
+		
+		// Récupérer le client correspondant au nom
+		Client client = clientService.getClientByNameDao(nom);
+		
+		// Instancier une nouvelle commande
+		Commande comm = new Commande();
+		
+		// Récupérer la date du jour
+		Calendar c = Calendar.getInstance();
+		Date date = c.getTime();
+		comm.setDate_commande(date);
+		
+		// Récupérer la liste des articles commandés
+		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
+		for (LigneCommande lc:articles.values()) {
+			lcList.add(lc);
+		}
+		
+		// Injecter les paramètres de la commande
+		panier.setClientP(client);
+		comm.setClient(client);
+		comm.setPanier(panier);
+		
+		// Enregistrer les données dans la BDD
+		panierService.addPanierService(panier);
+		commandeService.addCommandeService(comm);
+		
+		// Réinitialiser les données du restController
+		panier.setListeLC(null);
+		panier.setPrixTotal(0.00);
+		panier.setClientP(null);
+		articles.clear();
+		
+	}
+	
+	
+
 }

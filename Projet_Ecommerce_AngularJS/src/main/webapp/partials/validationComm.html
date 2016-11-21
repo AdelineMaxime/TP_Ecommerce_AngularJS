@@ -23,7 +23,6 @@
 		<td>Prix unitaire</td>
 		<td>Quantite</td>
 		<td>Prix total</td>
-		<td>Actions</td>
 	</thead>
 
 	<tbody ng-repeat="lc in panier.listeLC">
@@ -31,8 +30,9 @@
 		<td>{{lc.produit.prix}}</td>
 		<td>{{lc.quantite}}</td>
 		<td>{{lc.prix}}</td>
-		<td><button class="btn btn-default btn-lg" ng-click="doDeletePanier(lc.produit)">Retirer du panier</button></td>
 	</tbody>
 </table>
 
-<button class="btn btn-primary"><a href="#/client/ident">Valider le panier</a></button>
+
+
+<button class="btn btn-primary" ng-click="doFinaliser(panier.clientP.nom)">Valider le panier</button>

@@ -2,16 +2,20 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -36,14 +40,16 @@ public class Client implements Serializable{
 		private int tel;
 		
 		@OneToMany(mappedBy="client")
+		@JsonIgnore
 		private List<Commande> listeCommandes;
 		
-		@OneToOne(mappedBy="clientP")
-		private Panier panier;
+		@OneToMany(mappedBy="clientP", fetch=FetchType.EAGER)
+		@JsonIgnore
+		private List<Panier> panierList;
 		
 		@PostConstruct
 		public void init(){
-			this.panier=new Panier();
+			this.panierList=new ArrayList<Panier>();
 		}
 //-------------------------------------------------------------------------------------------------------------		
 //------------------------------2_Les constructeurs------------------------------------------------------------	
@@ -71,7 +77,6 @@ public class Client implements Serializable{
 			this.mail = mail;
 			this.password = password;
 			this.tel = tel;
-			//this.panier = new Panier();
 		}
 		
 		/**
@@ -183,19 +188,19 @@ public class Client implements Serializable{
 			this.listeCommandes = listeCommandes;
 		}
 		/**
-		 * @return the panier
+		 * @return the panierList
 		 */
-		public Panier getPanier() {
-			return panier;
+		public List<Panier> getPanierList() {
+			return panierList;
 		}
 		/**
-		 * @param panier the panier to set
+		 * @param panierList the panierList to set
 		 */
-		public void setPanier(Panier panier) {
-			this.panier = panier;
+		public void setPanierList(List<Panier> panierList) {
+			this.panierList = panierList;
 		}
-//-------------------------------------------------------------------------------------------------------------
-//------------------------------4_Méthodes---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------
+	//------------------------------4_Méthodes---------------------------------------------------------------------
 	/**
 	 * 4_Méthodes
 	 */

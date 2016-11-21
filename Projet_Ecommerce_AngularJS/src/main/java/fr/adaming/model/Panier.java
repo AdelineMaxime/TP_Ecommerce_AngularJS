@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,7 +32,7 @@ public class Panier implements Serializable{
 		
 		private double prixTotal;
 		
-		@OneToOne(cascade=CascadeType.PERSIST)
+		@ManyToOne(cascade=CascadeType.PERSIST)
 		@JoinColumn(name="client_id",referencedColumnName="id_client")
 		private Client clientP;
 		

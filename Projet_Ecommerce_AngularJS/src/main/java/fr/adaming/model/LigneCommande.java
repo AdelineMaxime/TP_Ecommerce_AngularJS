@@ -19,8 +19,7 @@ public class LigneCommande implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// ------------------------------1_Les propriétés (champs,
-	// attributs)-------------------------------------------
+	// ------------------------------1_Les propriétés (champs, attributs)-------------------------------------------
 	/**
 	 * 1_Les propriétés (champs, attributs)
 	 */
