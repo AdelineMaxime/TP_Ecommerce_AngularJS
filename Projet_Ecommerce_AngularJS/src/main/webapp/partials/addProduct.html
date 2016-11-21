@@ -12,28 +12,31 @@
 		<div class="form-group">
 			<label for="nomProd">Nom</label> <input type="text"
 				class="form-control" id="nomProd" ng-model="produit.nom"
-				placeholder="nom du produit">
+				placeholder="Nom du produit">
 		</div>
 		<div class="form-group">
-			<label for="descrProd">Description</label> <input type="text"
-				class="form-control" id="descrProd" ng-model="produit.description"
-				placeholder="description du produit">
+			<label for="descrProd">Description</label>
+			<textarea rows="3" type="text" class="form-control" id="descrProd"
+				ng-model="produit.description" placeholder="Description du produit"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="prixProd">Prix (€)</label> <input type="number"
 				class="form-control" id="prixProd" ng-model="produit.prix"
-				placeholder="prix du produit">
+				placeholder="Prix du produit">
 		</div>
 		<div class="form-group">
 			<label for="qteProd">Quantité</label> <input type="number"
 				class="form-control" id="qteProd" ng-model="produit.quantite"
-				placeholder="description du produit">
+				placeholder="Quantité">
 		</div>
-		<div class="form-group"><select ng-model="produit.categorie" ng-options="y.nom for (x, y) in allCat"></select>
-			<label for="idCatProd">Id</label> <span> {{produit.categorie.id_categorie}}</span>
+		<div class="form-group">
+			<label for="catProd">Catégorie du produit</label><br/> <select
+				ng-model="produit.categorie" ng-options="y.nom for (x, y) in allCat"></select>
+			<label for="idCatProd">Id</label> <span>
+				{{produit.categorie.id_categorie}}</span>
 
-		</div>	
-		
+		</div>
+
 
 		<button class="btn btn-default" ng-click="ajouterProd()">
 			Ajouter</button>

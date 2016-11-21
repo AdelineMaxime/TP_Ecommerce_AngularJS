@@ -88,7 +88,10 @@ public class GestionnaireRestController {
 	
 	@RequestMapping(value="/modifierProd", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
 	public void modifierProduit(@RequestBody Produit produit){
-		
+		System.out.println("\n--------------------------" +produit.getCategorie());
+		Categorie c=categorieService.getCategorieByNameService(produit.getCategorie().getNom());
+		System.out.println("\n--------------------------" +c);
+		produit.setCategorie(c);
 		produitService.updateProductService(produit);
 	}
 

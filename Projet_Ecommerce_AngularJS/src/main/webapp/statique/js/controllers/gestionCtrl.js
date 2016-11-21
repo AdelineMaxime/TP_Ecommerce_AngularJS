@@ -51,22 +51,62 @@ monApp
 			$scope.bouttonDelete = function(prod) {
 				gestionFactory.supprProd(prod.nom, function(callback) {
 					$scope.prodByCat = callback;
+					
+					gestionFactory.getProdByCat(function(callback) {
+						$scope.prodByCat = callback;
 				})
-				gestionFactory.getProdByCat(function(callback) {
-					$scope.prodByCat = callback;
+
 				})
 			}
 			
-			$rootScope.produit = {
-					
-					id_produit:-1,
-					nom : "",
-					description:"",
-					quantite:"",
-					prix:"",
-					categorie:{"nom":""},
-				}
+//			$rootScope.produit = {
+//					
+//					id_produit:-1,
+//					nom : "",
+//					description:"",
+//					quantite:"",
+//					prix:"",
+//					categorie:{"nom":""},
+//				}
 			
+			$scope.boutonUpdate = function(prod){
+				
+				$rootScope.prod=prod;
+				$location.path("gestion/updateProd")
+			}
+
+		})
+		
+		
+		
+		
+.controller('gestionAllProdCtrl',
+		function($rootScope, $scope, gestionFactory, $location) {
+
+			gestionFactory.getAllProd(function(callback) {
+				$scope.allProd = callback;
+			})
+
+			$scope.bouttonDelete = function(prod) {
+				gestionFactory.supprProd(prod.nom, function(callback) {
+					$scope.allProd = callback;
+					gestionFactory.getAllProd(function(callback) {
+						$scope.allProd = callback;
+				})
+				
+				})
+			}
+//			
+//			$rootScope.produit = {
+//					
+//					id_produit:-1,
+//					nom : "",
+//					description:"",
+//					quantite:"",
+//					prix:"",
+//					categorie:{"nom":""},
+//				}
+//			
 			$scope.boutonUpdate = function(prod){
 				
 				$rootScope.prod=prod;
@@ -92,15 +132,6 @@ monApp
 })
 
 .controller('gestionAddProdCtrl', function($scope, gestionFactory, $location, $rootScope) {
-//$scope.produit = {
-//		
-//		id_produit:-1,
-//		nom : "",
-//		description:"",
-//		quantite:"",
-//		prix:"",
-//		categorie:{"id_categorie":""},
-//	};
 		
 $scope.ajouterProd = function() {
 		gestionFactory.addProd($scope.produit, function(callback) {
@@ -128,6 +159,9 @@ console.log($scope.produit)
 
 					});
 				}
+				gestionFactory.getAllCat(function(callback) {
+					$scope.allCat = callback;
+				})
 	
 		})
 

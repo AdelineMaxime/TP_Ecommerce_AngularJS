@@ -42,11 +42,20 @@
 				class="form-control" id="quantite" ng-model="produit.quantite"
 				placeholder="quantité du produit">
 		</div>
+<!-- 		<div class="form-group"> -->
+<!-- 			<label for="idCat">Id Catégorie</label> <input type="text" -->
+<!-- 				class="form-control" id="idCat" ng-model="produit.categorie.nom" -->
+<!-- 				placeholder="id de la catégorie"> -->
+<!-- 		</div> -->
+		
 		<div class="form-group">
-			<label for="idCat">Id Catégorie</label> <input type="number"
-				class="form-control" id="idCat" ng-model="produit.categorie.id_categorie"
-				placeholder="id de la catégorie">
+			<label for="catProd">Catégorie du produit</label><br/> <select
+				ng-model="produit.categorie" ng-options="y.nom for (x, y) in allCat"></select>
+			<label for="idCatProd">Id</label> <span>
+				{{produit.categorie.id_categorie}}</span>
+
 		</div>
+		
 
 		<button class="btn btn-default" ng-click="modifierProd()">
 			Modifier</button>
