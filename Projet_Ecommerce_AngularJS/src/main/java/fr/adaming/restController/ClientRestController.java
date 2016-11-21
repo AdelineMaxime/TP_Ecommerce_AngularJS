@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,9 +47,15 @@ public class ClientRestController {
 	@Autowired
 	IProduitService produitService;
 
+
 	Panier panier=new Panier();
 	Map<Integer, LigneCommande> articles = new HashMap<Integer, LigneCommande>();
+	Map<Integer, Produit> allProducts = new HashMap<Integer, Produit>();
 
+	
+
+	
+	
 	// Méthodes
 	// ------------------------------------------------------------------------------------------------------
 
@@ -59,7 +67,7 @@ public class ClientRestController {
 
 	@RequestMapping(value = "/allCat", method = RequestMethod.GET, produces = "application/json")
 	public List<Categorie> getAllCat() {
-
+		
 		return categorieService.getAllCategorieService();
 	}
 
@@ -179,13 +187,7 @@ public class ClientRestController {
 		Date date = c.getTime();
 		comm.setDate_commande(date);
 		
-		// Récupérer la liste des articles commandés
-		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
-		for (LigneCommande lc:articles.values()) {
-			lcList.add(lc);
-			lc.setPanier(panier);
-			ligneCommService.addLigneCommService(lc);
-		}
+
 		
 		// Injecter les paramètres de la commande
 		panier.setClientP(client);
@@ -193,8 +195,16 @@ public class ClientRestController {
 		comm.setPanier(panier);
 		
 		// Enregistrer les données dans la BDD
-		panierService.addPanierService(panier);
+		Panier panierC = panierService.addPanierService(panier);
 		commandeService.addCommandeService(comm);
+		
+		// Récupérer la liste des articles commandés
+		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
+		for (LigneCommande lc:articles.values()) {
+			lcList.add(lc);
+			lc.setPanier(panierC);
+			ligneCommService.addLigneCommService(lc);
+		}
 		
 		// Réinitialiser les données du restController
 		panier.setListeLC(null);

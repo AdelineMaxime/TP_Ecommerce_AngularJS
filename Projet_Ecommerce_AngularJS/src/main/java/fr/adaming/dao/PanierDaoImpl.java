@@ -18,11 +18,12 @@ public class PanierDaoImpl implements IPanierDao {
 	 * Créer un nouveau panier
 	 */
 	@Override
-	public void addPanierDao(Panier panier) {
+	public Panier addPanierDao(Panier panier) {
 
 		Session session = sf.openSession();
 		session.save(panier);
 		
+		return panier;
 	}
 
 }

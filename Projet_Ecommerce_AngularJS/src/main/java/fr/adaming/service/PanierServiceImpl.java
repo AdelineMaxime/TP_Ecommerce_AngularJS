@@ -17,9 +17,9 @@ public class PanierServiceImpl implements IPanierService {
 	 * Créer un nouveau panier
 	 */
 	@Override
-	public void addPanierService(Panier panier) {
+	public Panier addPanierService(Panier panier) {
 
-		panierService.addPanierDao(panier);
+		return panierService.addPanierDao(panier);
 	}
 
 }

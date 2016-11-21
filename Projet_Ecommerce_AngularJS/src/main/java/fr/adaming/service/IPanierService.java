@@ -4,6 +4,6 @@ import fr.adaming.model.Panier;
 
 public interface IPanierService {
 
-	public void addPanierService(Panier panier);
+	public Panier addPanierService(Panier panier);
 	
 }

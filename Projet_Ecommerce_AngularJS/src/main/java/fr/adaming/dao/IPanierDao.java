@@ -4,6 +4,6 @@ import fr.adaming.model.Panier;
 
 public interface IPanierDao {
 
-	public void addPanierDao(Panier panier);
+	public Panier addPanierDao(Panier panier);
 
 }
