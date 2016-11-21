@@ -104,6 +104,25 @@ monApp.factory('gestionFactory', function($http) {
 
 	}
 	
+	function update(produit, callback) {
+		$http({
+			method : 'PUT',
+			url : urlString + '/modifierProd',
+			data:angular.toJson(produit),
+			headers:{
+				'Content-Type':'application/Json'
+			}
+			
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+
+		}).error(function(reason) {
+			console.log('Erreur: ' + reason);
+		});
+
+	}
+	
 	
 	return {
 		getAllProd:getAllProd,
@@ -113,6 +132,7 @@ monApp.factory('gestionFactory', function($http) {
 		supprProd:supprProd,
 		addCat:addCat,
 		addProd:addProd,
+		update:update
 
 	}
 	

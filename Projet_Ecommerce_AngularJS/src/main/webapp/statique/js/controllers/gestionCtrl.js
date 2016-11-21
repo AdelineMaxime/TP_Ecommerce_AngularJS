@@ -56,6 +56,24 @@ monApp
 					$scope.prodByCat = callback;
 				})
 			}
+			
+			$rootScope.produit = {
+					nom : "",
+					description:"",
+					quantite:"",
+					prix:"",
+					categorie:"",
+				}
+			
+			$scope.boutonUpdate = function(prod){
+				
+				$rootScope.produit.nom=prod.nom;
+				$rootScope.produit.description=prod.description;
+				$rootScope.produit.quantite=prod.quantite;
+				$rootScope.produit.prix=prod.prix;
+				$rootScope.produit.categorie=prod.categorie;
+				$location.path("gestion/updateProd")
+			}
 
 		})
 
@@ -75,15 +93,7 @@ monApp
 
 })
 
-.controller('gestionAddProdCtrl', function($scope, gestionFactory, $location) {
-
-	$scope.produit = {
-		nom : "",
-		description:"",
-		quantite:"",
-		prix:"",
-		categorie:"",
-	}
+.controller('gestionAddProdCtrl', function($scope, gestionFactory, $location, $rootScope) {
 
 	$scope.ajouterProd = function() {
 		gestionFactory.addProd($scope.produit, function(callback) {
@@ -94,3 +104,23 @@ monApp
 	}
 
 })
+
+
+.controller('gestionUpdateProdCtrl', function($scope, gestionFactory, $location, $rootScope){
+	
+				$scope.produit.nom=$rootScope.prod.nom;
+				$scope.produit.description=$rootScope.prod.description;
+				$scope.produit.quantite=$rootScope.prod.quantite;
+				$scope.produit.prix=$rootScope.prod.prix;
+				$scope.produit.categorie=$rootScope.prod.categorie;
+			
+				$scope.modifierProd = function(){
+					gestionFactory.update($scope.produit, function(callback){
+
+							$location.path("gestion/allCat");
+
+					});
+				}
+	
+		})
+

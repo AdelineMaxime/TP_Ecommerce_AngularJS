@@ -43,13 +43,14 @@
 		<td align="center"><b>{{prod.prix}}</b></td>
 		<td align="center"><b>{{prod.quantite}}</b></td>
 		<td align="center"><b>{{prod.categorie.nom}}</b></td>
-		<td align="center"><button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
+		<td align="center"><button ng-click="boutonUpdate(prod)" class="btn btn-primary">Modifier</button>
+		<button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
 	</tbody>
 </table>
 <!-- <span ng-repeat="prod in prodByCat track by $first">L'id de la categorie{{prod.categorie.nom}}</span> -->
 
 <a href="#/gestion/addProd">Ajouter un Produit</a>
-
+Categorie: {{prodByCat.categorie.nom}}
 
 </body>
 </html>
