@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -182,6 +183,8 @@ public class ClientRestController {
 		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
 		for (LigneCommande lc:articles.values()) {
 			lcList.add(lc);
+			lc.setPanier(panier);
+			ligneCommService.addLigneCommService(lc);
 		}
 		
 		// Injecter les paramètres de la commande
@@ -201,6 +204,11 @@ public class ClientRestController {
 		
 	}
 	
+	@RequestMapping(value="/addClient", method=RequestMethod.POST, produces="application/json")
+	public Client addClient(@RequestBody Client client) {
 	
-
+		clientService.addClientService(client);
+		
+		return client;
+	}
 }

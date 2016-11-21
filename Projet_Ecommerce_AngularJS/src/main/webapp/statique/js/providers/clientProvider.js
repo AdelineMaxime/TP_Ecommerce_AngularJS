@@ -101,6 +101,22 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	function addClient(client, callback) {
+		$http({
+			method: 'POST',
+			url: urlString+'/addClient',
+			data:angular.toJson(client),
+			headers:{
+				'Content-Type':'application/Json'
+			}
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
@@ -110,6 +126,7 @@ monApp.factory('clientFactory', function($http) {
 		deletePanier: deletePanier,
 		clientExist: clientExist,
 		finaliser: finaliser,
+		addClient: addClient,
 	}
 	
 })

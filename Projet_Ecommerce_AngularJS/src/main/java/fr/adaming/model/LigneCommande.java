@@ -121,20 +121,20 @@ public class LigneCommande implements Serializable {
 
 
 
-	// /**
-	// * @return the panier
-	// */
-	// public Panier getPanier() {
-	// return panier;
-	// }
-	//
-	// /**
-	// * @param panier
-	// * the panier to set
-	// */
-	// public void setPanier(Panier panier) {
-	// this.panier = panier;
-	// }
+	 /**
+	 * @return the panier
+	 */
+	 public Panier getPanier() {
+	 return panier;
+	 }
+	
+	 /**
+	 * @param panier
+	 * the panier to set
+	 */
+	 public void setPanier(Panier panier) {
+	 this.panier = panier;
+	 }
 
 	/**
 	 * @return the id_LC

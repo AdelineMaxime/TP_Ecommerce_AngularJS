@@ -38,9 +38,9 @@ public class Panier implements Serializable{
 		
 		@OneToMany(mappedBy="panier")
 		private List<LigneCommande> listeLC;
-//		
-//		@OneToOne(mappedBy="panier")
-//		private Commande cmd;
+		
+		@OneToOne(mappedBy="panier")
+		private Commande cmd;
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------2_Les constructeurs------------------------------------------------------------	
 	/**
@@ -125,18 +125,18 @@ public class Panier implements Serializable{
 		public void setListeLC(List<LigneCommande> listeLC) {
 			this.listeLC = listeLC;
 		}
-//		/**
-//		 * @return the cmd
-//		 */
-//		public Commande getCmd() {
-//			return cmd;
-//		}
-//		/**
-//		 * @param cmd the cmd to set
-//		 */
-//		public void setCmd(Commande cmd) {
-//			this.cmd = cmd;
-//		}
+		/**
+		 * @return the cmd
+		 */
+		public Commande getCmd() {
+			return cmd;
+		}
+		/**
+		 * @param cmd the cmd to set
+		 */
+		public void setCmd(Commande cmd) {
+			this.cmd = cmd;
+		}
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------4_Méthodes---------------------------------------------------------------------
 	/**

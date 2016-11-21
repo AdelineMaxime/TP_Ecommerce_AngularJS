@@ -118,3 +118,20 @@ monApp
 	
 })
 
+
+.controller('clientaddClientCtrl', function($scope, clientFactory, $location) {
+	
+	$scope.clientForm = {
+			nom:undefined,
+			adresse:undefined,
+			mail:undefined,
+			password:undefined,
+			tel:undefined,
+	}
+	
+	$scope.doAddClient = function() {
+		clientFactory.addClient($scope.clientForm, function(callback) {
+			$location.path('client/ident');
+		})
+	}
+})
