@@ -84,10 +84,11 @@ monApp
 
 			$scope.doClientExist = function(nom, password) {
 
-				console.log("-----------------------------------------------"+nom);
+				console.log("--------------------Nom : "+nom+"---------------------------Password : "+password);
 				
 				clientFactory.clientExist(nom, password, function(callback) {
 					$scope.client = callback;
+					console.log($scope.client);
 					
 
 					if ($scope.client.nom == undefined) {
@@ -108,7 +109,7 @@ monApp
 		$scope.panier = callback;
 	})
 	
-	$scope.nom = $scope.panier.clientP.nom;
+	$scope.nom = $rootScope.client.nom;
 	$scope.doFinaliser = function(nom) {
 		clientFactory.finaliser(nom, function(callback) {
 			$location.path('client/allCat');

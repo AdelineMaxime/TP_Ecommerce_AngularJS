@@ -15,6 +15,10 @@
 <br>
 <br>
 
+    Rechercher : 
+    <input type="text" ng-model="search.$">
+    <br>
+
 <table class="table table-striped">
 	<thead>
 		<td>Id</td>
@@ -25,7 +29,7 @@
 		<td>Actions</td>
 	</thead>
 
-	<tbody ng-repeat="prod in prodByCat">
+	<tbody ng-repeat="prod in prodByCat | filter : search : strict">
 		<td>{{prod.id_produit}}</td>
 		<td>{{prod.nom}}</td>
 		<td>{{prod.description}}</td>

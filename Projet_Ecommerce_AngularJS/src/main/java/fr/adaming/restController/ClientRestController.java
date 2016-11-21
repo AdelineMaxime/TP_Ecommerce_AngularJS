@@ -7,10 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PreDestroy;
-
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +51,14 @@ public class ClientRestController {
 	Map<Integer, Produit> allProducts = new HashMap<Integer, Produit>();
 
 	
-
+	@PostConstruct
+	public void init() {
+		
+		List<Produit> produitsList = produitService.getAllProductService();
+		for (Produit prod:produitsList) {
+			allProducts.put(prod.getId_produit(), prod);
+		}
+	}
 	
 	
 	// Méthodes
@@ -62,7 +67,12 @@ public class ClientRestController {
 	@RequestMapping(value = "/allProducts", method = RequestMethod.GET, produces = "application/json")
 	public List<Produit> getAllProducts() {
 
-		return produitService.getAllProductService();
+		List<Produit> liste = new ArrayList<Produit>();
+		for (Produit p:allProducts.values()) {
+			liste.add(p);
+		}
+		
+		return liste;
 	}
 
 	@RequestMapping(value = "/allCat", method = RequestMethod.GET, produces = "application/json")
@@ -74,13 +84,22 @@ public class ClientRestController {
 	@RequestMapping(value = "/prodByCat/{idCat}", method = RequestMethod.GET, produces = "application/json")
 	public List<Produit> getProdByCat(@PathVariable("idCat") int id) {
 
-		return produitService.getProductByCatService(id);
+		List<Produit> liste = new ArrayList<Produit>();
+		List<Produit> liste2 = produitService.getProductByCatService(id);
+		
+		for (Produit prod:liste2) {
+			Produit p = allProducts.get(prod.getId_produit());
+			liste.add(p);
+		}
+		
+		return liste;
 	}
 
 	@RequestMapping(value = "/addPanier/{nomProd}", method = RequestMethod.GET, produces = "application/json")
 	public Panier addToPanier(@PathVariable("nomProd") String nom) {
 
-		Produit p1 = produitService.getProductByNameService(nom);
+		Produit p1Service = produitService.getProductByNameService(nom);
+		Produit p1 = allProducts.get(p1Service.getId_produit());
 
 		if (p1.getQuantite() == 0) {
 
@@ -105,7 +124,8 @@ public class ClientRestController {
 			}
 
 			p1.setQuantite(p1.getQuantite() - 1);
-			produitService.updateProductService(p1);
+			allProducts.replace(p1.getId_produit(), p1);
+			
 
 		}
 
@@ -133,11 +153,12 @@ public class ClientRestController {
 	@RequestMapping(value="/deletePanier/{nomProd}", method=RequestMethod.GET, produces="application/json")
 	public Panier deleteToPanier(@PathVariable("nomProd") String nom) {
 		
-		Produit p1 = produitService.getProductByNameService(nom);
+		Produit p1Service = produitService.getProductByNameService(nom);
+		Produit p1 = allProducts.get(p1Service.getId_produit());
 		int qte = articles.get(p1.getId_produit()).getQuantite();
 		
 		p1.setQuantite(p1.getId_produit()+qte);
-		produitService.updateProductService(p1);
+		allProducts.replace(p1.getId_produit(), p1);
 		
 		articles.remove(p1.getId_produit());
 		
@@ -187,8 +208,6 @@ public class ClientRestController {
 		Date date = c.getTime();
 		comm.setDate_commande(date);
 		
-
-		
 		// Injecter les paramètres de la commande
 		panier.setClientP(client);
 		comm.setClient(client);
@@ -204,6 +223,10 @@ public class ClientRestController {
 			lcList.add(lc);
 			lc.setPanier(panierC);
 			ligneCommService.addLigneCommService(lc);
+			// màj la base de données des produits
+			Produit p = produitService.getProductByNameService(lc.getProduit().getNom());
+			p.setQuantite(p.getQuantite()-lc.getQuantite());
+			produitService.updateProductService(p);
 		}
 		
 		// Réinitialiser les données du restController
