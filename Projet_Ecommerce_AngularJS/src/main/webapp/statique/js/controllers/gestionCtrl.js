@@ -64,7 +64,7 @@ monApp
 					description:"",
 					quantite:"",
 					prix:"",
-					categorie:"",
+					categorie:{"nom":""},
 				}
 			
 			$scope.boutonUpdate = function(prod){
@@ -92,10 +92,19 @@ monApp
 })
 
 .controller('gestionAddProdCtrl', function($scope, gestionFactory, $location, $rootScope) {
-
-	$scope.ajouterProd = function() {
+//$scope.produit = {
+//		
+//		id_produit:-1,
+//		nom : "",
+//		description:"",
+//		quantite:"",
+//		prix:"",
+//		categorie:{"id_categorie":""},
+//	};
+		
+$scope.ajouterProd = function() {
 		gestionFactory.addProd($scope.produit, function(callback) {
-
+console.log($scope.produit)
 			$location.path("gestion/allCat");
 
 		});
