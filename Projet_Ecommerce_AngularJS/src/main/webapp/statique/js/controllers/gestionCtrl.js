@@ -135,7 +135,7 @@ monApp
 		
 $scope.ajouterProd = function() {
 		gestionFactory.addProd($scope.produit, function(callback) {
-console.log($scope.produit)
+
 			$location.path("gestion/allCat");
 
 		});
@@ -163,5 +163,31 @@ console.log($scope.produit)
 					$scope.allCat = callback;
 				})
 	
+		})
+		
+		
+.controller('gestionIdentCtrl', function($rootScope, $scope, gestionFactory, $location) {
+
+			$scope.login = undefined;
+			$scope.mdp = undefined;
+
+			$scope.doGestionExist = function(login, mdp) {
+
+				console.log("--------------------Login : "+login+"---------------------------Mdp : "+mdp);
+				
+				gestionFactory.gestionExist(login, mdp, function(callback) {
+					$scope.gestionnaire = callback;
+					console.log($scope.gestionnaire);
+					
+
+					if ($scope.gestionnaire.login == undefined) {
+
+					} else {
+						$rootScope.gestionnaire = $scope.gestionnaire;
+						$location.path('gestion/allCat');
+					}
+				})
+
+			}
 		})
 

@@ -124,6 +124,19 @@ monApp.factory('gestionFactory', function($http) {
 	}
 	
 	
+	function gestionExist(loginGest, mdpGest, callback) {
+		$http({
+			method: 'POST',
+			url: urlString+'/connecterGest/'+loginGest+'/'+mdpGest
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
@@ -132,7 +145,8 @@ monApp.factory('gestionFactory', function($http) {
 		supprProd:supprProd,
 		addCat:addCat,
 		addProd:addProd,
-		update:update
+		update:update,
+		gestionExist:gestionExist,
 
 	}
 	
