@@ -3,7 +3,8 @@ monApp
 .controller('clientAllCatCtrl', function($rootScope, $scope, clientFactory, $location) {
 
 			// Initialiser indice ng-show
-			$rootScope.indice=true;
+			$rootScope.indiceConnexion=false;
+			$rootScope.indiceClientExist=false;
 	
 			// Obtenir toutes les catégories
 			clientFactory.getAllCat(function(callback) {
@@ -63,11 +64,14 @@ monApp
 
 		})
 
-.controller('clientPanierCtrl', function($scope, clientFactory) {
+.controller('clientPanierCtrl', function($rootScope, $scope, clientFactory) {
 
 	clientFactory.getPanier(function(callback) {
 		$scope.panier = callback;
 	})
+
+	// Modifier indice ng-show pour modifier le bouton qui apparait
+	$rootScope.indiceConnexion=true;
 
 	// Supprimer du panier
 	$scope.doDeletePanier = function(prod) {
@@ -126,7 +130,7 @@ monApp
 })
 
 
-.controller('clientaddClientCtrl', function($scope, clientFactory, $location) {
+.controller('clientaddClientCtrl', function($rootScope, $scope, clientFactory, $location) {
 	
 	$scope.clientForm = {
 			nom:undefined,
@@ -137,8 +141,21 @@ monApp
 	}
 	
 	$scope.doAddClient = function() {
+		
 		clientFactory.addClient($scope.clientForm, function(callback) {
-			$location.path('client/ident');
+			
+			$scope.client = callback;
+			
+			if ($scope.client.nom == undefined) {
+				$rootScope.indiceClientExist=true;
+				$scope.indiceClientExist = $rootScope.indiceClientExist;
+				$location.path('client/addClient');
+			} else {
+				$rootScope.indiceClientExist=false;
+				$scope.indiceClientExist = $rootScope.indiceClientExist;
+				$location.path('client/ident');
+			}
+			
 		})
 	}
 })

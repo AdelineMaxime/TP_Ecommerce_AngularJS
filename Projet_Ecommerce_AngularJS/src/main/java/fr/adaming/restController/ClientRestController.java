@@ -240,11 +240,19 @@ public class ClientRestController {
 	@RequestMapping(value="/addClient", method=RequestMethod.POST, produces="application/json")
 	public Client addClient(@RequestBody Client client) {
 	
-		clientService.addClientService(client);
+		int exist = clientService.isExistClientService(client.getNom());
 		
-		return client;
+		if (exist == 0) {	// Si aucun client avec le même nom exist
+			clientService.addClientService(client);
+			return client;
+			
+		} else {			// Si le client existe déjà
+			
+			return new Client(null, null, null, null, 0);
+		}
+		
+		
 	}
-	
 	
 	@RequestMapping(value="/commandes/{nomC}", method=RequestMethod.GET, produces="application/json")
 	public List<Commande> getCommandeByClient(@PathVariable("nomC") String nom) {
