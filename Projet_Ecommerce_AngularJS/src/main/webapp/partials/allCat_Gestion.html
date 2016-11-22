@@ -9,47 +9,22 @@
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Accueil</a></li>
-      <li><a href="#/gestion/addCat">Ajouter une Catégorie</a></li>
+      <li class="active"><a href="#/gestion/allCat">Liste des Catégories</a></li>
       <li><a href="#/gestion/allProd">Liste des produits</a></li>
+      <li><a href="#/gestion/addCat">Ajouter une Catégorie</a></li>
+      <li><a href="#/gestion/addProd">Ajouter un Produit</a></li>
     </ul>
-    <form class="navbar-form navbar-left">
-      <div class="form-group">
-        Search:  <input ng-model="searchText">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+    <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+    <a href="#/gestion/ident"><span class="glyphicon glyphicon-log-out">Deconnexion</span></a>
     </form>
+    
   </div>
 </nav>
 
-<!-- <nav class="navbar navbar-inverse"> -->
-<!-- <div class="container-fluid"> -->
-<!-- <ul class="nav nav-pills"> -->
-<!--   <li role="presentation" class="active"><a href="#">Accueil</a></li> -->
-<!--   <li role="presentation"><a href="#/gestion/addCat">Ajouter une Catégorie</a></li> -->
-<!--   <li role="presentation"><a href="#/gestion/allProd">Liste des produits</a></li> -->
-<!--   </ul> -->
-<!--   <form class="navbar-form navbar-left"> -->
-<!--   <div class="form-group"> -->
-<!--   <label style="color:blue;">Search: </label> -->
-<!--   <input ng-model="searchText"> -->
-<!--   </div> -->
-<!--   </form> -->
-
-<!-- </div> -->
-<!-- </nav> -->
-
-	<div align="center">
-		<table cellspacing="0" width="25%">
-			<tr>
-				<td
-					style="background-color: lightblue; color: darkgreen; font-size: 22pt"
-					align="center">Liste Des Categories</td>
-		</table>
-	</div>
 	<br />
 	<br />
 	<table class="table table-hover">
