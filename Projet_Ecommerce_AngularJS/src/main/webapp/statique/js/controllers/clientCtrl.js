@@ -218,5 +218,27 @@ monApp
 					
 					console.log($scope.commandes);
 				
+					
+					$scope.doGetOldPanier = function(commande) {
+						clientFactory.getOldPanier(commande, function(callback) {
+							$rootScope.oldPanier=callback;
+							$rootScope.commande= $scope.commande;
+						})
+						$location.path('client/oldPanier');
+					}
 
 				})
+				
+				
+		.controller(
+				'clientOldPanierCtrl',
+				function($rootScope, $scope, clientFactory, $location) {
+
+					// Obtenir les produits d'une cétgorie
+					//$scope.commande = undefined;
+					$scope.allLCOldPanier = $rootScope.oldPanier;
+
+
+				})
+				
+				

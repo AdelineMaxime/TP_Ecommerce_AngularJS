@@ -258,17 +258,20 @@ public class ClientRestController {
 	public List<Commande> getCommandeByClient(@RequestBody Client client) {
 	
 		List<Commande> c=commandeService.getCommandeByClientService(client);
-//		for (Commande l:c){
-//		System.out.println("------------------------------"+l);
-//		}
+
 		return c;
 		
 	}
 	
-	@RequestMapping(value="/odlPanier/{id_comm}", method=RequestMethod.GET, produces="application/json")
-	public Panier getPanierByCommande(@PathVariable("id_comm") int id) {
+	@RequestMapping(value="/oldPanier", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	public List<LigneCommande> getPanierByCommande(@RequestBody Commande comm) {
 		
-		return panierService.getPanierByIdCommandeService(id);
+//		Panier panier = panierService.getPanierByIdCommandeService(comm.getId_commande());
+//		System.out.println("-------------------------"+panier);
+		
+		List<LigneCommande> liste = ligneCommService.getLignCommByCommService(comm);
+		
+		return liste;
 	}
 	
 }

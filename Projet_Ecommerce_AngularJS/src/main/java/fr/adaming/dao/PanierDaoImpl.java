@@ -1,5 +1,6 @@
 package fr.adaming.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,8 +31,13 @@ public class PanierDaoImpl implements IPanierDao {
 	@Override
 	public Panier getPanierByIdCommandeDao(int id) {
 
-		Session s = sf.getCurrentSession();
-		String req = "SELECT p FROM Panier p WHERE p.cmd.id_commande=:id";
+		Session s;
+		try {
+		    s = sf.getCurrentSession();
+		} catch (HibernateException e) {
+		    s = sf.openSession();
+		}
+		String req = "SELECT p FROM Panier p WHERE p.id_panier=:id";
 		Query query = s.createQuery(req);
 		query.setParameter("id", id);
 		

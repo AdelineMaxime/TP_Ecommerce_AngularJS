@@ -2,12 +2,14 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 @Repository
@@ -67,6 +69,23 @@ public class LigneCommDaoImpl implements ILigneCommDao {
 		List<LigneCommande> liste = query.list();
 
 		return liste;
+	}
+
+	@Override
+	public List<LigneCommande> getLignCommByCommDao(Commande commande) {
+
+		Session s;
+		try {
+		    s = sf.getCurrentSession();
+		} catch (HibernateException e) {
+		    s = sf.openSession();
+		}
+		
+		String req = "SELECT l FROM LigneCommande l WHERE l.panier.id_panier=:id";
+		Query query = s.createQuery(req);
+		query.setParameter("id", commande.getId_commande());
+		
+		return query.list();
 	}
 
 }

@@ -72,6 +72,10 @@ monApp.config(function($routeProvider) {
 		templateUrl: "partials/commandes_Client.html",
 		controller: "clientOldCommandesCtrl"
 	})
+	.when('/client/oldPanier', {
+		templateUrl: "partials/odlPanier_Client.html",
+		controller: "clientOldPanierCtrl"
+	})
 	.otherwise({
 		redirectTo: '/client/allCat'
 	})

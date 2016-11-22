@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.adaming.dao.ILigneCommDao;
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 @Service("ligneCommServiceBean")
@@ -49,6 +50,12 @@ public class LigneCommServiceImpl implements ILigneCommService {
 	public List<LigneCommande> getAllLigneCommService() {
 
 		return ligneCommDao.getAllLigneCommDao();
+	}
+
+	@Override
+	public List<LigneCommande> getLignCommByCommService(Commande commande) {
+
+		return ligneCommDao.getLignCommByCommDao(commande);
 	}
 
 }

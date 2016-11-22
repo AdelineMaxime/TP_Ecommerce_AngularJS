@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 public interface ILigneCommService {
@@ -10,5 +11,5 @@ public interface ILigneCommService {
 	public void deleteLigneCommService(LigneCommande lc);
 	public void updateLigneCommService(int qte);
 	public List<LigneCommande> getAllLigneCommService();
-	
+	public List<LigneCommande> getLignCommByCommService(Commande commande);
 }

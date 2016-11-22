@@ -18,7 +18,7 @@
 	<tbody ng-repeat="comm in commandes">
 		<td>{{comm.id_commande}}</td>
 		<td><span>{{comm.date_commande | date:'yyyy-MM-dd HH:mm:ss'}}</span></td>
-		<td><button class="btn btn-default btn-lg" ng-click="">Voir la commande</button></td>
+		<td><button class="btn btn-default btn-lg" ng-click="doGetOldPanier(comm)">Voir la commande</button></td>
 	</tbody>
 </table>
 

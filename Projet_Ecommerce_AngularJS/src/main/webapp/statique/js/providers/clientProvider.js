@@ -133,6 +133,22 @@ monApp.factory('clientFactory', function($http) {
 		});
 	}
 	
+	function getOldPanier(commande, callback) {
+		$http({
+			method: 'POST',
+			url: urlString+'/oldPanier',
+			data: angular.toJson(commande),
+			headers:{
+				'Content-Type':'application/json'
+			}
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
 	return {
 		getAllProd:getAllProd,
 		getAllCat:getAllCat,
@@ -144,6 +160,7 @@ monApp.factory('clientFactory', function($http) {
 		finaliser: finaliser,
 		addClient: addClient,
 		getCommandes: getCommandes,
+		getOldPanier: getOldPanier,
 	}
 	
 })

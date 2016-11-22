@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 public interface ILigneCommDao {
@@ -10,5 +11,6 @@ public interface ILigneCommDao {
 	public void deleteLigneCommDao(LigneCommande lc);
 	public void updateLigneCommDao(int qte);
 	public List<LigneCommande> getAllLigneCommDao();
+	public List<LigneCommande> getLignCommByCommDao(Commande commande);
 
 }
