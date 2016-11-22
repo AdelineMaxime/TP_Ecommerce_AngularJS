@@ -1,5 +1,7 @@
 package fr.adaming.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,12 @@ public class CommandeServiceImpl implements ICommandeService {
 
 		commandeDao.addCommandeDao(commande);
 		
+	}
+
+	@Override
+	public List<Commande> getCommandeByClientService(String nom) {
+
+		return commandeDao.getCommandeByClientDao(nom);
 	}
 
 }

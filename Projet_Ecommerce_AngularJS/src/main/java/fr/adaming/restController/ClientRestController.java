@@ -244,4 +244,15 @@ public class ClientRestController {
 		
 		return client;
 	}
+	
+	
+	@RequestMapping(value="/commandes/{nomC}", method=RequestMethod.GET, produces="application/json")
+	public List<Commande> getCommandeByClient(@PathVariable("nomC") String nom) {
+		
+
+		return commandeService.getCommandeByClientService(nom);
+		
+	}
+	
+	
 }

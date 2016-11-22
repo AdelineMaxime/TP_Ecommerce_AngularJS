@@ -2,6 +2,9 @@ monApp
 
 .controller('clientAllCatCtrl', function($rootScope, $scope, clientFactory, $location) {
 
+			// Initialiser indice ng-show
+			$rootScope.indice=true;
+	
 			// Obtenir toutes les catégories
 			clientFactory.getAllCat(function(callback) {
 				$scope.allCat = callback;
@@ -90,7 +93,6 @@ monApp
 					$scope.client = callback;
 					console.log($scope.client);
 					
-
 					if ($scope.client.nom == undefined) {
 
 					} else {
@@ -100,6 +102,10 @@ monApp
 				})
 
 			}
+			
+			
+			
+			
 		})
 		
 .controller('clientValidCommCtrl', function($rootScope, $scope, clientFactory, $location) {

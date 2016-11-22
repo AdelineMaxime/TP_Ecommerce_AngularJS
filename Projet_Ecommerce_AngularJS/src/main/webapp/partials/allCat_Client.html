@@ -22,21 +22,7 @@
 		ng-click="doGetProdByCat(cat)">{{cat.id_categorie}} |
 		{{cat.nom}}</button>
 
-<table class="table table-striped" ng-show="indice">
-	<thead>
-		<td>Nom</td>
-		<td>Description</td>
-		<td>Prix</td>
-		<td>Quantité</td>
-	</thead>
 
-	<tbody ng-repeat="prod in prodByCat">
-		<td>{{prod.id_produit}}</td>
-		<td>{{prod.nom}}</td>
-		<td>{{prod.description}}</td>
-		<td>{{prod.quantite}}</td>
-	</tbody>
-</table>
 
 
 </div>
