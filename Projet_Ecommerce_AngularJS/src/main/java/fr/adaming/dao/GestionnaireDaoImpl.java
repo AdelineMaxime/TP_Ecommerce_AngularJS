@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fr.adaming.model.Client;
 import fr.adaming.model.Gestionnaire;
 
 @Repository
@@ -22,7 +21,7 @@ public class GestionnaireDaoImpl implements IGestionnaireDao {
 		Session session = sf.getCurrentSession();
 		String req = "SELECT c FROM Gestionnaire c WHERE c.login=:nom AND c.mdp=:mdp";
 		Query query = session.createQuery(req);
-		query.setParameter("login", login);
+		query.setParameter("nom", login);
 		query.setParameter("mdp", password);
 		
 		return query.list().size();

@@ -52,7 +52,7 @@ monApp
 				gestionFactory.supprProd(prod.nom, function(callback) {
 					$scope.prodByCat = callback;
 					
-					gestionFactory.getProdByCat(function(callback) {
+					gestionFactory.getProdByCat(prod.categorie.id_categorie, function(callback) {
 						$scope.prodByCat = callback;
 				})
 
@@ -155,7 +155,7 @@ $scope.ajouterProd = function() {
 				$scope.modifierProd = function(){
 					gestionFactory.update($scope.produit, function(callback){
 
-							$location.path("gestion/allCat");
+							$location.path("gestion/allProd");
 
 					});
 				}
