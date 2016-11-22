@@ -21,7 +21,7 @@ monApp
 						})
 						$location.path('client/prodByCat')
 					}
-					
+
 					// Obtenir tous les produits
 					$scope.doGetAllProd = function() {
 						$location.path('client/allProd')
@@ -43,11 +43,21 @@ monApp
 
 				})
 
-		.controller('clientAllProdCtrl', function($scope, clientFactory) {
+		.controller('clientAllProdCtrl', function($rootScope, $scope, clientFactory, $location) {
 
 			clientFactory.getAllProd(function(callback) {
 				$scope.allProd = callback;
 			})
+
+			// Ajouter au panier
+			$scope.doAddPanier = function(prod) {
+				clientFactory.addPanier(prod.nom, function(callback) {
+					$rootScope.panier = callback;
+				})
+
+				$location.path('client/allCat');
+			}
+
 		})
 
 		.controller(
@@ -138,13 +148,13 @@ monApp
 								callback) {
 							$scope.client = callback;
 							console.log($scope.client);
-							
-							if ($scope.client.nom== undefined) {
-								
+
+							if ($scope.client.nom == undefined) {
+
 							} else {
 
-							$rootScope.client = $scope.client;
-							$location.path('client/oldComm');
+								$rootScope.client = $scope.client;
+								$location.path('client/oldComm');
 
 							}
 						})
@@ -215,30 +225,25 @@ monApp
 								$scope.commandes = callback;
 								console.log($scope.commandes);
 							});
-					
+
 					console.log($scope.commandes);
-				
-					
+
 					$scope.doGetOldPanier = function(commande) {
-						clientFactory.getOldPanier(commande, function(callback) {
-							$rootScope.oldPanier=callback;
-							$rootScope.commande= $scope.commande;
-						})
+						clientFactory.getOldPanier(commande,
+								function(callback) {
+									$rootScope.oldPanier = callback;
+									$rootScope.commande = $scope.commande;
+								})
 						$location.path('client/oldPanier');
 					}
 
 				})
-				
-				
-		.controller(
-				'clientOldPanierCtrl',
+
+		.controller('clientOldPanierCtrl',
 				function($rootScope, $scope, clientFactory, $location) {
 
 					// Obtenir les produits d'une cétgorie
-					//$scope.commande = undefined;
+					// $scope.commande = undefined;
 					$scope.allLCOldPanier = $rootScope.oldPanier;
 
-
 				})
-				
-				
