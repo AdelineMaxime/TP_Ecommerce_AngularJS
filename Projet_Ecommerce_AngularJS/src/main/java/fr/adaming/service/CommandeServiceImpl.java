@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.adaming.dao.ICommandeDao;
-import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 
 @Service

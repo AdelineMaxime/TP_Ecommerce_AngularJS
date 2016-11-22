@@ -28,15 +28,14 @@
 <br>
 
 
-
+<div class="list-group">
+	<button type="button" class="list-group-item"
+		ng-click="doGetAllProd()">Tous les produits</button>
+</div>
 <div class="list-group" ng-repeat="cat in allCat">
 	<button type="button" class="list-group-item"
 		ng-click="doGetProdByCat(cat)">{{cat.id_categorie}} |
 		{{cat.nom}}</button>
-
-
-
-
 </div>
 
 

@@ -21,6 +21,11 @@ monApp
 						})
 						$location.path('client/prodByCat')
 					}
+					
+					// Obtenir tous les produits
+					$scope.doGetAllProd = function() {
+						$location.path('client/allProd')
+					}
 
 					// Aller au panier
 					$rootScope.panier = {

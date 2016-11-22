@@ -6,44 +6,50 @@
 </head>
 <body>
 
-<ul class="nav nav-tabs">
-	<li role="presentation"><a href="/Projet_Ecommerce_AngularJS/">Home</a></li>
-	<li role="presentation" class="dropdown"><a href="#/client/panier"
-		class="dropdown-toggle" data-toggle="dropdown" role="button"
-		aria-haspopup="true" aria-expanded="false">Actions <span
-			class="caret"></span></a>
-		<ul class="dropdown-menu">
-			<li><a href="#/client/panier">Aller au panier</a></li>
-			<li><a href="#/gestion/ident">Accès gestionnaire</a></li>
-		</ul>
-</ul>
-<br>
-<br>
-<br>
-<br>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="/Projet_Ecommerce_AngularJS/">Home</a></li>
+		<li role="presentation" class="dropdown"><a
+			href="#/client/panier" class="dropdown-toggle" data-toggle="dropdown"
+			role="button" aria-haspopup="true" aria-expanded="false">Actions
+				<span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#/client/panier">Aller au panier</a></li>
+				<li><a href="#/gestion/ident">Accès gestionnaire</a></li>
+			</ul>
+	</ul>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
-<h1 align="center">Panier</h1>
+	<h1 align="center">Panier</h1>
 
-<table class="table table-striped" style="text-align: center;">
-	<thead>
-		<td>Nom Produit</td>
-		<td>Prix unitaire</td>
-		<td>Quantite</td>
-		<td>Prix total</td>
-		<td>Actions</td>
-	</thead>
+	<table class="table table-striped" style="text-align: center;">
+		<thead>
+			<tr bgcolor="grey" style="color: white; font-size: 18pt">
+				<td>Nom Produit</td>
+				<td>Prix unitaire</td>
+				<td>Quantite</td>
+				<td>Prix total</td>
+				<td>Actions</td>
+			</tr>
+		</thead>
 
-	<tbody ng-repeat="lc in panier.listeLC">
-		<td>{{lc.produit.nom}}</td>
-		<td>{{lc.produit.prix}}</td>
-		<td>{{lc.quantite}}</td>
-		<td>{{lc.prix}}</td>
-		<td><button class="btn btn-default btn-lg" ng-click="doDeletePanier(lc.produit)">Retirer du panier</button></td>
-	</tbody>
-</table>
+		<tbody ng-repeat="lc in panier.listeLC">
+			<td>{{lc.produit.nom}}</td>
+			<td>{{lc.produit.prix}}</td>
+			<td>{{lc.quantite}}</td>
+			<td>{{lc.prix}}</td>
+			<td><button class="btn btn-default btn-lg"
+					ng-click="doDeletePanier(lc.produit)">Retirer du panier</button></td>
+		</tbody>
+	</table>
 
-<button class="btn btn-primary"><a href="#/client/ident" style="color: white;">Valider le panier</a></button>
+	<button class="btn btn-primary">
+		<a href="#/client/ident" style="color: white;">Valider le panier</a>
+	</button>
 
 </body>
 </html>
