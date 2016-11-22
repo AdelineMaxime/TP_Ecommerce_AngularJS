@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.adaming.dao.ICommandeDao;
+import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 
 @Service
@@ -26,9 +27,9 @@ public class CommandeServiceImpl implements ICommandeService {
 	}
 
 	@Override
-	public List<Commande> getCommandeByClientService(String nom) {
+	public List<Commande> getCommandeByClientService(Client client) {
 
-		return commandeDao.getCommandeByClientDao(nom);
+		return commandeDao.getCommandeByClientDao(client);
 	}
 
 }

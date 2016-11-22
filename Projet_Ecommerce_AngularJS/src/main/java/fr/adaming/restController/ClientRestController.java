@@ -254,13 +254,21 @@ public class ClientRestController {
 		
 	}
 	
-	@RequestMapping(value="/commandes/{nomC}", method=RequestMethod.GET, produces="application/json")
-	public List<Commande> getCommandeByClient(@PathVariable("nomC") String nom) {
-		
-
-		return commandeService.getCommandeByClientService(nom);
+	@RequestMapping(value="/commandes", method=RequestMethod.POST, produces="application/json",consumes="application/json")
+	public List<Commande> getCommandeByClient(@RequestBody Client client) {
+	
+		List<Commande> c=commandeService.getCommandeByClientService(client);
+//		for (Commande l:c){
+//		System.out.println("------------------------------"+l);
+//		}
+		return c;
 		
 	}
 	
+	@RequestMapping(value="/odlPanier/{id_comm}", method=RequestMethod.GET, produces="application/json")
+	public Panier getPanierByCommande(@PathVariable("id_comm") int id) {
+		
+		return panierService.getPanierByIdCommandeService(id);
+	}
 	
 }

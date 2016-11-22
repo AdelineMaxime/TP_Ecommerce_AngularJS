@@ -107,7 +107,23 @@ monApp.factory('clientFactory', function($http) {
 			url: urlString+'/addClient',
 			data:angular.toJson(client),
 			headers:{
-				'Content-Type':'application/Json'
+				'Content-Type':'application/json'
+			}
+		}).success(function(response) {
+			console.log(response);
+			callback(response);
+		}).error(function (response) {
+			console.log(response);
+		});
+	}
+	
+	function getCommandes(client, callback) {
+		$http({
+			method: 'POST',
+			url: urlString+'/commandes',
+			data: angular.toJson(client),
+			headers:{
+				'Content-Type':'application/json'
 			}
 		}).success(function(response) {
 			console.log(response);
@@ -127,6 +143,7 @@ monApp.factory('clientFactory', function($http) {
 		clientExist: clientExist,
 		finaliser: finaliser,
 		addClient: addClient,
+		getCommandes: getCommandes,
 	}
 	
 })

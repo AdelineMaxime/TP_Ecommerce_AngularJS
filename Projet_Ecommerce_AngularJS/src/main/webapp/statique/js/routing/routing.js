@@ -68,6 +68,10 @@ monApp.config(function($routeProvider) {
 		templateUrl: "partials/validationComm.html",
 		controller: "clientValidCommCtrl"
 	})
+	.when('/client/oldComm', {
+		templateUrl: "partials/commandes_Client.html",
+		controller: "clientOldCommandesCtrl"
+	})
 	.otherwise({
 		redirectTo: '/client/allCat'
 	})

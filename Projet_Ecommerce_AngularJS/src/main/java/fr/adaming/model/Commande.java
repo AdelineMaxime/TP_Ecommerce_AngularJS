@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table
 public class Commande implements Serializable{
@@ -27,10 +31,12 @@ public class Commande implements Serializable{
 		private int id_commande;
 		private Date date_commande;
 		
+		@JsonIgnore
 		@OneToOne
 		@JoinColumn(name="panier_id",referencedColumnName="id_panier")
 		private Panier panier;
 		
+		@JsonIgnore
 		@ManyToOne
 		@JoinColumn(name="client_id",referencedColumnName="id_client")
 		private Client client;

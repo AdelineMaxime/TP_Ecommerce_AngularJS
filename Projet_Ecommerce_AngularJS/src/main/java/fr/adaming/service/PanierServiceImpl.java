@@ -22,4 +22,10 @@ public class PanierServiceImpl implements IPanierService {
 		return panierService.addPanierDao(panier);
 	}
 
+	@Override
+	public Panier getPanierByIdCommandeService(int id) {
+
+		return panierService.getPanierByIdCommandeDao(id);
+	}
+
 }

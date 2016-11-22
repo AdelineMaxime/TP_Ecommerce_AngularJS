@@ -8,6 +8,6 @@ import fr.adaming.model.Commande;
 public interface ICommandeDao {
 
 	public void addCommandeDao(Commande commande);
-	public List<Commande> getCommandeByClientDao(String nom);
+	public List<Commande> getCommandeByClientDao(Client client);
 	
 }
