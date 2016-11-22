@@ -6,19 +6,24 @@
 </head>
 <body>
 
-
-<label>Search: <input ng-model="searchText"></label>
-
-<br/>
-
-<div align="center">
-		<table cellspacing="0" width="50%">
-			<tr>
-				<td
-					style="background-color: lightblue; color: darkgreen; font-size: 22pt"
-					align="center">Liste Des Produits</td>
-		</table>
-	</div>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/gestion/allCat">Liste des Catégories</a></li>
+      <li class="active"><a href="#/gestion/allProd">Liste des produits</a></li>
+      <li><a href="#/gestion/addCat">Ajouter une Catégorie</a></li>
+      <li><a href="#/gestion/addProd">Ajouter un Produit</a></li>
+    </ul>
+    <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+    <a href="#/gestion/ident"><span class="glyphicon glyphicon-log-out">Deconnexion</span></a>
+    </form>
+    
+  </div>
+</nav>
 
 <br/>
 <br/>
@@ -43,12 +48,10 @@
 		<td align="center"><b>{{prod.prix}} €</b></td>
 		<td align="center"><b>{{prod.quantite}}</b></td>
 		<td align="center"><b>{{prod.categorie.nom}}</b></td>
-		<td align="center"><button ng-click="boutonUpdate(prod)" class="btn btn-primary">Modifier</button>
+		<td align="center"><button ng-click="boutonUpdate(prod)" class="btn btn-primary">&nbsp;Modifier &nbsp;</button>
 		<button ng-click="bouttonDelete(prod)" class="btn btn-danger">Supprimer</button></td>
 	</tbody>
 </table>
-
-<a href="#/gestion/addProd">Ajouter un Produit</a>
 
 
 </body>
